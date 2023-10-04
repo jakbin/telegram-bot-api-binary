@@ -1,0 +1,33 @@
+name: Publish package
+
+on: [push]
+
+jobs:
+  build-xfce4-docklike-plugin:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt update && sudo apt-get install zip libssl-dev zlib1g-dev g++ gperf cmake
+
+    - name: Build
+      run: |
+        git clone --recursive https://github.com/tdlib/telegram-bot-api.git
+        cd telegram-bot-api
+        mkdir build
+        cmake -DCMAKE_BUILD_TYPE=Release ..
+        cmake --build .
+        zip telegram-bot-api.zip telegram-bot-api
+
+    - name: Automatic Release
+      uses: marvinpinto/action-automatic-releases@latest
+      with: 
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: false
+        title: "Latest Build"
+        files: |
+          telegram-bot-api
+          telegram-bot-api.zip
