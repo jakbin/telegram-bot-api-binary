@@ -31,5 +31,5 @@ jobs:
         prerelease: false
         title: "Latest Build"
         files: |
-          telegram-bot-api
-          telegram-bot-api.zip
+          telegram-bot-api/build/telegram-bot-api
+          telegram-bot-api/build/telegram-bot-api.zip
