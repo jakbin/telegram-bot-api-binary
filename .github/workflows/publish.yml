@@ -3,7 +3,8 @@ name: Publish package
 on: [push]
 
 jobs:
-  build-xfce4-docklike-plugin:
+  telegram-bot-api:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
