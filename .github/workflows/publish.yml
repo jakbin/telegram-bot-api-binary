@@ -1,6 +1,6 @@
 name: Publish package
 
-on: [push]
+on: workflow_dispatch
 
 jobs:
   telegram-bot-api:
