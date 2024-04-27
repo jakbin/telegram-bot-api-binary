@@ -1,5 +1,7 @@
 # telegram-bot-api-binary
 
+[![All Downloads](https://img.shields.io/github/downloads/jakbin/telegram-bot-api-binary/total.svg)](https://github.com/jakbin/telegram-bot-api-binary)
+
 telegram-bot-api binary
 
 ## Run using docker 
