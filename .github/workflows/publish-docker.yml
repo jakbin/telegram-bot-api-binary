@@ -1,6 +1,13 @@
 name: Publish Docker Image
 
-on: workflow_dispatch
+# on: workflow_dispatch
+
+# Only trigger, when the build workflow succeeded
+on:
+  workflow_run:
+    workflows: ["Publish package"]
+    types:
+      - completed
 
 env:
   REGISTRY: ghcr.io
