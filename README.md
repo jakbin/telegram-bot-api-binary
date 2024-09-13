@@ -19,5 +19,5 @@ docker -d -p 8081:8081 -e API_ID=<your_api_id> -e API_HASH=<your_api_hash> ghcr.
 ## Run direct from terminal
 
 ```sh
-curl https://github.com/jakbin/telegram-bot-api-binary/raw/main/run.sh  | bash -s your_api_id your_api_hash
+curl -L https://github.com/jakbin/telegram-bot-api-binary/raw/main/run.sh  | bash -s your_api_id your_api_hash
 ```
