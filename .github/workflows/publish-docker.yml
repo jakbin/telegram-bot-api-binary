@@ -8,6 +8,7 @@ on:
     workflows: ["Publish package"]
     types:
       - completed
+    status: success
 
 env:
   REGISTRY: ghcr.io
