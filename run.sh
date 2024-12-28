@@ -18,7 +18,7 @@ else
     if command -v wget >/dev/null 2>&1; then
         wget "$file_url"
     elif command -v curl >/dev/null 2>&1; then
-        curl -O "$file_url"
+        curl -L -O "$file_url"
     else
         echo "Error: Neither 'wget' nor 'curl' is available. Cannot download the file."
         exit 1
