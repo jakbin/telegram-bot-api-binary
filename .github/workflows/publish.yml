@@ -10,16 +10,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Cache system dependencies to avoid reinstalling on every run
-    - name: Cache apt dependencies
-      uses: actions/cache@v3
-      with:
-        path: /var/cache/apt
-        key: ${{ runner.os }}-apt
-
     # Install Dependencies (updates only if needed)
     - name: Install Dependencies
       run: sudo apt update && sudo apt-get install -y zip libssl-dev zlib1g-dev g++ gperf cmake
+
+
+    - name: Clone repo
+      run: |
+        git clone --recursive https://github.com/tdlib/telegram-bot-api.git
 
     # Cache CMake build files to speed up subsequent builds
     - name: Cache CMake build
@@ -30,11 +28,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-
 
-    - name: Build
+    - name: Configure and build
       run: |
-        git clone --recursive https://github.com/tdlib/telegram-bot-api.git
         cd telegram-bot-api
-        mkdir -p build
         cd build
         cmake -DCMAKE_BUILD_TYPE=Release ..
         cmake --build .
